@@ -38,21 +38,82 @@ function* eachDateInclusive(startISO, endISO) {
 }
 
 function buildRows({ ids, start, end, login, logout, skipDays, nextDayLogout }) {
-  // Build rows in the format: EmployeeId, LogIn, LogOut, LogInVenue, LogOutVenue, ShiftDate, EditType
-  const rows = [];
-  for (const date of eachDateInclusive(start, end)) {
-    const dow = date.getDay();
-    if (skipDays.has(dow)) continue;
+  // Helper: iterate dates inclusive, normalized to midnight
+  function* days(startISO, endISO) {
+    const d = new Date(startISO);
+    const e = new Date(endISO);
+    d.setHours(0, 0, 0, 0);
+    e.setHours(0, 0, 0, 0);
+    while (d.getTime() <= e.getTime()) {
+      yield new Date(d);
+      d.setDate(d.getDate() + 1);
+    }
+  }
+  const toKey = (d) => { const x = new Date(d); x.setHours(0,0,0,0); return x.getTime(); };
+  const fromKey = (k) => new Date(k);
 
-    const shiftDate = formatDMY(date);
-    const inTime = login || "";
-    const outTime = logout || "";
+  // Build the set of "working" days (login days), skipping selected weekdays
+  const workKeys = [];
+  for (const d of days(start, end)) {
+    if (!skipDays.has(d.getDay())) workKeys.push(toKey(d));
+  }
+
+  // If no next-day logic, put login+logout on the same day (simple case)
+  if (!nextDayLogout) {
+    const rows = [];
+    for (const k of workKeys) {
+      const shiftDate = formatDMY(fromKey(k));
+      for (const eid of ids) {
+        rows.push({
+          EmployeeId: eid,
+          LogIn: login || "",
+          LogOut: logout || "",
+          LogInVenue: "",
+          LogOutVenue: "",
+          ShiftDate: shiftDate,
+          EditType: "ADD",
+        });
+      }
+    }
+    return rows;
+  }
+
+  // Next-day-logout logic:
+  // Map of dayKey -> { login: boolean, logout: boolean }
+  const map = new Map();
+
+  // Mark login on each working day
+  for (const k of workKeys) {
+    const cur = map.get(k) || { login: false, logout: false };
+    cur.login = true;
+    map.set(k, cur);
+  }
+
+  // Shift logout to the following day for each working day
+  for (const k of workKeys) {
+    const outKey = toKey(new Date(fromKey(k).setDate(fromKey(k).getDate() + 1)));
+    const cur = map.get(outKey) || { login: false, logout: false };
+    cur.logout = !!logout; // only if a logout time was provided
+    map.set(outKey, cur);
+  }
+
+  // Sort all days we need to output (includes the extra trailing day)
+  const allKeys = Array.from(map.keys()).sort((a, b) => a - b);
+
+  // Emit rows (login from today, logout from yesterday if present)
+  const rows = [];
+  for (const dayKey of allKeys) {
+    const flags = map.get(dayKey);
+    const shiftDate = formatDMY(fromKey(dayKey));
+
+    // If neither login nor logout exists for this day, skip
+    if (!flags.login && !flags.logout) continue;
 
     for (const eid of ids) {
       rows.push({
         EmployeeId: eid,
-        LogIn: inTime || "",
-        LogOut: outTime || "",
+        LogIn: flags.login ? (login || "") : "",
+        LogOut: flags.logout ? (logout || "") : "",
         LogInVenue: "",
         LogOutVenue: "",
         ShiftDate: shiftDate,
@@ -61,29 +122,9 @@ function buildRows({ ids, start, end, login, logout, skipDays, nextDayLogout }) 
     }
   }
 
-  // Optional: If nextDayLogout is true and you want an extra "logout-only" row
-  // for the day AFTER the end date (matches some night-shift patterns),
-  // uncomment the block below:
-  //
-  // if (nextDayLogout && logout) {
-  //   const extra = new Date(end);
-  //   extra.setDate(extra.getDate() + 1);
-  //   const shiftDate = formatDMY(extra);
-  //   for (const eid of ids) {
-  //     rows.push({
-  //       EmployeeId: eid,
-  //       LogIn: "",
-  //       LogOut: logout,
-  //       LogInVenue: "",
-  //       LogOutVenue: "",
-  //       ShiftDate: shiftDate,
-  //       EditType: "ADD",
-  //     });
-  //   }
-  // }
-
   return rows;
 }
+
 
 function toCSV(rows) {
   const header = ["EmployeeId", "LogIn", "LogOut", "LogInVenue", "LogOutVenue", "ShiftDate", "EditType"];
