@@ -89,6 +89,94 @@ module.exports = require("next/dist/compiled/next-server/app-page.runtime.dev.js
 
 /***/ }),
 
+/***/ "buffer":
+/*!*************************!*\
+  !*** external "buffer" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("buffer");
+
+/***/ }),
+
+/***/ "crypto":
+/*!*************************!*\
+  !*** external "crypto" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("crypto");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "https":
+/*!************************!*\
+  !*** external "https" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("https");
+
+/***/ }),
+
+/***/ "punycode":
+/*!***************************!*\
+  !*** external "punycode" ***!
+  \***************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("punycode");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
+
+/***/ }),
+
 /***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fworkspaces%2Flogin-signup%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fworkspaces%2Flogin-signup&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fworkspaces%2Flogin-signup%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fworkspaces%2Flogin-signup&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! ***!
@@ -100,13 +188,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FAppToaster.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%5C%22path%5C%22%3A%5C%22app%2Flayout.jsx%5C%22%2C%5C%22import%5C%22%3A%5C%22Inter%5C%22%2C%5C%22arguments%5C%22%3A%5B%7B%5C%22subsets%5C%22%3A%5B%5C%22latin%5C%22%5D%2C%5C%22variable%5C%22%3A%5C%22--font-inter%5C%22%7D%5D%2C%5C%22variableName%5C%22%3A%5C%22inter%5C%22%7D%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=true!":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FAppToaster.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%5C%22path%5C%22%3A%5C%22app%2Flayout.jsx%5C%22%2C%5C%22import%5C%22%3A%5C%22Inter%5C%22%2C%5C%22arguments%5C%22%3A%5B%7B%5C%22subsets%5C%22%3A%5B%5C%22latin%5C%22%5D%2C%5C%22variable%5C%22%3A%5C%22--font-inter%5C%22%7D%5D%2C%5C%22variableName%5C%22%3A%5C%22inter%5C%22%7D%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=true! ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FAppToaster.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FSupabaseListener.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%5C%22path%5C%22%3A%5C%22app%2Flayout.jsx%5C%22%2C%5C%22import%5C%22%3A%5C%22Inter%5C%22%2C%5C%22arguments%5C%22%3A%5B%7B%5C%22subsets%5C%22%3A%5B%5C%22latin%5C%22%5D%2C%5C%22variable%5C%22%3A%5C%22--font-inter%5C%22%7D%5D%2C%5C%22variableName%5C%22%3A%5C%22inter%5C%22%7D%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=true!":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FAppToaster.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FSupabaseListener.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%5C%22path%5C%22%3A%5C%22app%2Flayout.jsx%5C%22%2C%5C%22import%5C%22%3A%5C%22Inter%5C%22%2C%5C%22arguments%5C%22%3A%5B%7B%5C%22subsets%5C%22%3A%5B%5C%22latin%5C%22%5D%2C%5C%22variable%5C%22%3A%5C%22--font-inter%5C%22%7D%5D%2C%5C%22variableName%5C%22%3A%5C%22inter%5C%22%7D%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=true! ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/AppToaster.jsx */ \"(ssr)/./components/AppToaster.jsx\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRndvcmtzcGFjZXMlMkZsb2dpbi1zaWdudXAlMkZjb21wb25lbnRzJTJGQXBwVG9hc3Rlci5qc3glMjIlMkMlMjJpZHMlMjIlM0ElNUIlMjJkZWZhdWx0JTIyJTVEJTdEJm1vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRndvcmtzcGFjZXMlMkZsb2dpbi1zaWdudXAlMkZub2RlX21vZHVsZXMlMkZuZXh0JTJGZm9udCUyRmdvb2dsZSUyRnRhcmdldC5jc3MlM0YlN0IlNUMlMjJwYXRoJTVDJTIyJTNBJTVDJTIyYXBwJTJGbGF5b3V0LmpzeCU1QyUyMiUyQyU1QyUyMmltcG9ydCU1QyUyMiUzQSU1QyUyMkludGVyJTVDJTIyJTJDJTVDJTIyYXJndW1lbnRzJTVDJTIyJTNBJTVCJTdCJTVDJTIyc3Vic2V0cyU1QyUyMiUzQSU1QiU1QyUyMmxhdGluJTVDJTIyJTVEJTJDJTVDJTIydmFyaWFibGUlNUMlMjIlM0ElNUMlMjItLWZvbnQtaW50ZXIlNUMlMjIlN0QlNUQlMkMlNUMlMjJ2YXJpYWJsZU5hbWUlNUMlMjIlM0ElNUMlMjJpbnRlciU1QyUyMiU3RCUyMiUyQyUyMmlkcyUyMiUzQSU1QiU1RCU3RCZtb2R1bGVzPSU3QiUyMnJlcXVlc3QlMjIlM0ElMjIlMkZ3b3Jrc3BhY2VzJTJGbG9naW4tc2lnbnVwJTJGYXBwJTJGZ2xvYmFscy5jc3MlMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0Qmc2VydmVyPXRydWUhIiwibWFwcGluZ3MiOiJBQUFBLGtLQUFvSCIsInNvdXJjZXMiOlsid2VicGFjazovL2F1dGgtYXBwLz81MDk1Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiLCB3ZWJwYWNrRXhwb3J0czogW1wiZGVmYXVsdFwiXSAqLyBcIi93b3Jrc3BhY2VzL2xvZ2luLXNpZ251cC9jb21wb25lbnRzL0FwcFRvYXN0ZXIuanN4XCIpO1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FAppToaster.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%5C%22path%5C%22%3A%5C%22app%2Flayout.jsx%5C%22%2C%5C%22import%5C%22%3A%5C%22Inter%5C%22%2C%5C%22arguments%5C%22%3A%5B%7B%5C%22subsets%5C%22%3A%5B%5C%22latin%5C%22%5D%2C%5C%22variable%5C%22%3A%5C%22--font-inter%5C%22%7D%5D%2C%5C%22variableName%5C%22%3A%5C%22inter%5C%22%7D%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=true!\n");
+eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/AppToaster.jsx */ \"(ssr)/./components/AppToaster.jsx\"));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/SupabaseListener.jsx */ \"(ssr)/./components/SupabaseListener.jsx\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRndvcmtzcGFjZXMlMkZsb2dpbi1zaWdudXAlMkZjb21wb25lbnRzJTJGQXBwVG9hc3Rlci5qc3glMjIlMkMlMjJpZHMlMjIlM0ElNUIlMjJkZWZhdWx0JTIyJTVEJTdEJm1vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRndvcmtzcGFjZXMlMkZsb2dpbi1zaWdudXAlMkZjb21wb25lbnRzJTJGU3VwYWJhc2VMaXN0ZW5lci5qc3glMjIlMkMlMjJpZHMlMjIlM0ElNUIlMjJkZWZhdWx0JTIyJTVEJTdEJm1vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRndvcmtzcGFjZXMlMkZsb2dpbi1zaWdudXAlMkZub2RlX21vZHVsZXMlMkZuZXh0JTJGZm9udCUyRmdvb2dsZSUyRnRhcmdldC5jc3MlM0YlN0IlNUMlMjJwYXRoJTVDJTIyJTNBJTVDJTIyYXBwJTJGbGF5b3V0LmpzeCU1QyUyMiUyQyU1QyUyMmltcG9ydCU1QyUyMiUzQSU1QyUyMkludGVyJTVDJTIyJTJDJTVDJTIyYXJndW1lbnRzJTVDJTIyJTNBJTVCJTdCJTVDJTIyc3Vic2V0cyU1QyUyMiUzQSU1QiU1QyUyMmxhdGluJTVDJTIyJTVEJTJDJTVDJTIydmFyaWFibGUlNUMlMjIlM0ElNUMlMjItLWZvbnQtaW50ZXIlNUMlMjIlN0QlNUQlMkMlNUMlMjJ2YXJpYWJsZU5hbWUlNUMlMjIlM0ElNUMlMjJpbnRlciU1QyUyMiU3RCUyMiUyQyUyMmlkcyUyMiUzQSU1QiU1RCU3RCZtb2R1bGVzPSU3QiUyMnJlcXVlc3QlMjIlM0ElMjIlMkZ3b3Jrc3BhY2VzJTJGbG9naW4tc2lnbnVwJTJGYXBwJTJGZ2xvYmFscy5jc3MlMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0Qmc2VydmVyPXRydWUhIiwibWFwcGluZ3MiOiJBQUFBLGtLQUFvSDtBQUNwSDtBQUNBLDhLQUEwSCIsInNvdXJjZXMiOlsid2VicGFjazovL2F1dGgtYXBwLz82YmY2Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiLCB3ZWJwYWNrRXhwb3J0czogW1wiZGVmYXVsdFwiXSAqLyBcIi93b3Jrc3BhY2VzL2xvZ2luLXNpZ251cC9jb21wb25lbnRzL0FwcFRvYXN0ZXIuanN4XCIpO1xuO1xuaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIsIHdlYnBhY2tFeHBvcnRzOiBbXCJkZWZhdWx0XCJdICovIFwiL3dvcmtzcGFjZXMvbG9naW4tc2lnbnVwL2NvbXBvbmVudHMvU3VwYWJhc2VMaXN0ZW5lci5qc3hcIik7XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FAppToaster.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fcomponents%2FSupabaseListener.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fnode_modules%2Fnext%2Ffont%2Fgoogle%2Ftarget.css%3F%7B%5C%22path%5C%22%3A%5C%22app%2Flayout.jsx%5C%22%2C%5C%22import%5C%22%3A%5C%22Inter%5C%22%2C%5C%22arguments%5C%22%3A%5B%7B%5C%22subsets%5C%22%3A%5B%5C%22latin%5C%22%5D%2C%5C%22variable%5C%22%3A%5C%22--font-inter%5C%22%7D%5D%2C%5C%22variableName%5C%22%3A%5C%22inter%5C%22%7D%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fworkspaces%2Flogin-signup%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=true!\n");
 
 /***/ }),
 
@@ -131,6 +219,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "(ssr)/./components/SupabaseListener.jsx":
+/*!*****************************************!*\
+  !*** ./components/SupabaseListener.jsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ SupabaseListener)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _lib_supabase_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/lib/supabase-browser */ \"(ssr)/./lib/supabase-browser.js\");\n/* __next_internal_client_entry_do_not_use__ default auto */ \n\nfunction SupabaseListener() {\n    const supabase = (0,_lib_supabase_browser__WEBPACK_IMPORTED_MODULE_1__.getBrowserClient)();\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{\n        const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session)=>{\n            // Tell the server to set/clear cookies\n            await fetch(\"/auth/callback\", {\n                method: \"POST\",\n                headers: {\n                    \"Content-Type\": \"application/json\"\n                },\n                body: JSON.stringify({\n                    event,\n                    session\n                })\n            });\n        });\n        return ()=>subscription.unsubscribe();\n    }, [\n        supabase\n    ]);\n    return null;\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9jb21wb25lbnRzL1N1cGFiYXNlTGlzdGVuZXIuanN4IiwibWFwcGluZ3MiOiI7Ozs7Ozs7NkRBRWtDO0FBQ3dCO0FBRTNDLFNBQVNFO0lBQ3RCLE1BQU1DLFdBQVdGLHVFQUFnQkE7SUFFakNELGdEQUFTQSxDQUFDO1FBQ1IsTUFBTSxFQUFFSSxNQUFNLEVBQUVDLFlBQVksRUFBRSxFQUFFLEdBQUdGLFNBQVNHLElBQUksQ0FBQ0MsaUJBQWlCLENBQ2hFLE9BQU9DLE9BQU9DO1lBQ1osdUNBQXVDO1lBQ3ZDLE1BQU1DLE1BQU0sa0JBQWtCO2dCQUM1QkMsUUFBUTtnQkFDUkMsU0FBUztvQkFBRSxnQkFBZ0I7Z0JBQW1CO2dCQUM5Q0MsTUFBTUMsS0FBS0MsU0FBUyxDQUFDO29CQUFFUDtvQkFBT0M7Z0JBQVE7WUFDeEM7UUFDRjtRQUVGLE9BQU8sSUFBTUosYUFBYVcsV0FBVztJQUN2QyxHQUFHO1FBQUNiO0tBQVM7SUFFYixPQUFPO0FBQ1QiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9hdXRoLWFwcC8uL2NvbXBvbmVudHMvU3VwYWJhc2VMaXN0ZW5lci5qc3g/YjZlYyJdLCJzb3VyY2VzQ29udGVudCI6WyJcInVzZSBjbGllbnRcIjtcblxuaW1wb3J0IHsgdXNlRWZmZWN0IH0gZnJvbSBcInJlYWN0XCI7XG5pbXBvcnQgeyBnZXRCcm93c2VyQ2xpZW50IH0gZnJvbSBcIkAvbGliL3N1cGFiYXNlLWJyb3dzZXJcIjtcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gU3VwYWJhc2VMaXN0ZW5lcigpIHtcbiAgY29uc3Qgc3VwYWJhc2UgPSBnZXRCcm93c2VyQ2xpZW50KCk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBjb25zdCB7IGRhdGE6IHsgc3Vic2NyaXB0aW9uIH0gfSA9IHN1cGFiYXNlLmF1dGgub25BdXRoU3RhdGVDaGFuZ2UoXG4gICAgICBhc3luYyAoZXZlbnQsIHNlc3Npb24pID0+IHtcbiAgICAgICAgLy8gVGVsbCB0aGUgc2VydmVyIHRvIHNldC9jbGVhciBjb29raWVzXG4gICAgICAgIGF3YWl0IGZldGNoKFwiL2F1dGgvY2FsbGJhY2tcIiwge1xuICAgICAgICAgIG1ldGhvZDogXCJQT1NUXCIsXG4gICAgICAgICAgaGVhZGVyczogeyBcIkNvbnRlbnQtVHlwZVwiOiBcImFwcGxpY2F0aW9uL2pzb25cIiB9LFxuICAgICAgICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KHsgZXZlbnQsIHNlc3Npb24gfSlcbiAgICAgICAgfSk7XG4gICAgICB9XG4gICAgKTtcbiAgICByZXR1cm4gKCkgPT4gc3Vic2NyaXB0aW9uLnVuc3Vic2NyaWJlKCk7XG4gIH0sIFtzdXBhYmFzZV0pO1xuXG4gIHJldHVybiBudWxsO1xufVxuIl0sIm5hbWVzIjpbInVzZUVmZmVjdCIsImdldEJyb3dzZXJDbGllbnQiLCJTdXBhYmFzZUxpc3RlbmVyIiwic3VwYWJhc2UiLCJkYXRhIiwic3Vic2NyaXB0aW9uIiwiYXV0aCIsIm9uQXV0aFN0YXRlQ2hhbmdlIiwiZXZlbnQiLCJzZXNzaW9uIiwiZmV0Y2giLCJtZXRob2QiLCJoZWFkZXJzIiwiYm9keSIsIkpTT04iLCJzdHJpbmdpZnkiLCJ1bnN1YnNjcmliZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(ssr)/./components/SupabaseListener.jsx\n");
+
+/***/ }),
+
+/***/ "(ssr)/./lib/supabase-browser.js":
+/*!*********************************!*\
+  !*** ./lib/supabase-browser.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getBrowserClient: () => (/* binding */ getBrowserClient)\n/* harmony export */ });\n/* harmony import */ var _supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/auth-helpers-nextjs */ \"(ssr)/./node_modules/@supabase/auth-helpers-nextjs/dist/index.js\");\n/* harmony import */ var _supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_0__);\n// lib/supabase-browser.js\n\nfunction getBrowserClient() {\n    return (0,_supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_0__.createClientComponentClient)(); // reads env vars automatically\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9saWIvc3VwYWJhc2UtYnJvd3Nlci5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSwwQkFBMEI7QUFDa0Q7QUFDckUsU0FBU0M7SUFDZCxPQUFPRCwwRkFBMkJBLElBQUksK0JBQStCO0FBQ3ZFIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vYXV0aC1hcHAvLi9saWIvc3VwYWJhc2UtYnJvd3Nlci5qcz84M2FiIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGxpYi9zdXBhYmFzZS1icm93c2VyLmpzXG5pbXBvcnQgeyBjcmVhdGVDbGllbnRDb21wb25lbnRDbGllbnQgfSBmcm9tIFwiQHN1cGFiYXNlL2F1dGgtaGVscGVycy1uZXh0anNcIjtcbmV4cG9ydCBmdW5jdGlvbiBnZXRCcm93c2VyQ2xpZW50KCkge1xuICByZXR1cm4gY3JlYXRlQ2xpZW50Q29tcG9uZW50Q2xpZW50KCk7IC8vIHJlYWRzIGVudiB2YXJzIGF1dG9tYXRpY2FsbHlcbn1cbiJdLCJuYW1lcyI6WyJjcmVhdGVDbGllbnRDb21wb25lbnRDbGllbnQiLCJnZXRCcm93c2VyQ2xpZW50Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./lib/supabase-browser.js\n");
+
+/***/ }),
+
 /***/ "(rsc)/./app/globals.css":
 /*!*************************!*\
   !*** ./app/globals.css ***!
@@ -149,7 +259,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ RootLayout)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/font/google/target.css?{\"path\":\"app/layout.jsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"],\"variable\":\"--font-inter\"}],\"variableName\":\"inter\"} */ \"(rsc)/./node_modules/next/font/google/target.css?{\\\"path\\\":\\\"app/layout.jsx\\\",\\\"import\\\":\\\"Inter\\\",\\\"arguments\\\":[{\\\"subsets\\\":[\\\"latin\\\"],\\\"variable\\\":\\\"--font-inter\\\"}],\\\"variableName\\\":\\\"inter\\\"}\");\n/* harmony import */ var next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./globals.css */ \"(rsc)/./app/globals.css\");\n/* harmony import */ var _components_AppToaster__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/AppToaster */ \"(rsc)/./components/AppToaster.jsx\");\n\n\n\n\nfunction RootLayout({ children }) {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"html\", {\n        lang: \"en\",\n        className: (next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_3___default().variable),\n        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"body\", {\n            className: \"antialiased bg-neutral-950 text-neutral-100\",\n            children: [\n                children,\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_AppToaster__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {}, void 0, false, {\n                    fileName: \"/workspaces/login-signup/app/layout.jsx\",\n                    lineNumber: 12,\n                    columnNumber: 9\n                }, this)\n            ]\n        }, void 0, true, {\n            fileName: \"/workspaces/login-signup/app/layout.jsx\",\n            lineNumber: 10,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"/workspaces/login-signup/app/layout.jsx\",\n        lineNumber: 9,\n        columnNumber: 5\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9hcHAvbGF5b3V0LmpzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUlNQTtBQUppQjtBQUUwQjtBQUlsQyxTQUFTRSxXQUFXLEVBQUVDLFFBQVEsRUFBRTtJQUM3QyxxQkFDRSw4REFBQ0M7UUFBS0MsTUFBSztRQUFLQyxXQUFXTiw4S0FBYztrQkFDdkMsNEVBQUNRO1lBQUtGLFdBQVU7O2dCQUNiSDs4QkFDRCw4REFBQ0YsOERBQVVBOzs7Ozs7Ozs7Ozs7Ozs7O0FBSW5CIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vYXV0aC1hcHAvLi9hcHAvbGF5b3V0LmpzeD8wYzgxIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBcIi4vZ2xvYmFscy5jc3NcIjtcbmltcG9ydCB7IEludGVyIH0gZnJvbSBcIm5leHQvZm9udC9nb29nbGVcIjtcbmltcG9ydCBBcHBUb2FzdGVyIGZyb20gXCJAL2NvbXBvbmVudHMvQXBwVG9hc3RlclwiO1xuXG5jb25zdCBpbnRlciA9IEludGVyKHsgc3Vic2V0czogW1wibGF0aW5cIl0sIHZhcmlhYmxlOiBcIi0tZm9udC1pbnRlclwiIH0pO1xuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBSb290TGF5b3V0KHsgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxodG1sIGxhbmc9XCJlblwiIGNsYXNzTmFtZT17aW50ZXIudmFyaWFibGV9PlxuICAgICAgPGJvZHkgY2xhc3NOYW1lPVwiYW50aWFsaWFzZWQgYmctbmV1dHJhbC05NTAgdGV4dC1uZXV0cmFsLTEwMFwiPlxuICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgIDxBcHBUb2FzdGVyIC8+XG4gICAgICA8L2JvZHk+XG4gICAgPC9odG1sPlxuICApO1xufVxuIl0sIm5hbWVzIjpbImludGVyIiwiQXBwVG9hc3RlciIsIlJvb3RMYXlvdXQiLCJjaGlsZHJlbiIsImh0bWwiLCJsYW5nIiwiY2xhc3NOYW1lIiwidmFyaWFibGUiLCJib2R5Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./app/layout.jsx\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ RootLayout),\n/* harmony export */   metadata: () => (/* binding */ metadata)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/font/google/target.css?{\"path\":\"app/layout.jsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"],\"variable\":\"--font-inter\"}],\"variableName\":\"inter\"} */ \"(rsc)/./node_modules/next/font/google/target.css?{\\\"path\\\":\\\"app/layout.jsx\\\",\\\"import\\\":\\\"Inter\\\",\\\"arguments\\\":[{\\\"subsets\\\":[\\\"latin\\\"],\\\"variable\\\":\\\"--font-inter\\\"}],\\\"variableName\\\":\\\"inter\\\"}\");\n/* harmony import */ var next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./globals.css */ \"(rsc)/./app/globals.css\");\n/* harmony import */ var _components_AppToaster__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/AppToaster */ \"(rsc)/./components/AppToaster.jsx\");\n/* harmony import */ var _components_SupabaseListener__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/SupabaseListener */ \"(rsc)/./components/SupabaseListener.jsx\");\n\n\n\n // your toaster wrapper\n // ⬅️ add this\nconst metadata = {\n    title: \"Auth\",\n    description: \"Login / Sign up\"\n};\nfunction RootLayout({ children }) {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"html\", {\n        lang: \"en\",\n        className: (next_font_google_target_css_path_app_layout_jsx_import_Inter_arguments_subsets_latin_variable_font_inter_variableName_inter___WEBPACK_IMPORTED_MODULE_4___default().variable),\n        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"body\", {\n            className: \"antialiased bg-neutral-950 text-neutral-100\",\n            children: [\n                children,\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_SupabaseListener__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {}, void 0, false, {\n                    fileName: \"/workspaces/login-signup/app/layout.jsx\",\n                    lineNumber: 15,\n                    columnNumber: 9\n                }, this),\n                \"   \",\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_AppToaster__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {}, void 0, false, {\n                    fileName: \"/workspaces/login-signup/app/layout.jsx\",\n                    lineNumber: 16,\n                    columnNumber: 9\n                }, this)\n            ]\n        }, void 0, true, {\n            fileName: \"/workspaces/login-signup/app/layout.jsx\",\n            lineNumber: 13,\n            columnNumber: 7\n        }, this)\n    }, void 0, false, {\n        fileName: \"/workspaces/login-signup/app/layout.jsx\",\n        lineNumber: 12,\n        columnNumber: 5\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9hcHAvbGF5b3V0LmpzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7O0FBS01BO0FBTGlCO0FBRTBCLENBQUMsdUJBQXVCO0FBQ1osQ0FBQyxjQUFjO0FBSXJFLE1BQU1HLFdBQVc7SUFBRUMsT0FBTztJQUFRQyxhQUFhO0FBQWtCLEVBQUU7QUFFM0QsU0FBU0MsV0FBVyxFQUFFQyxRQUFRLEVBQUU7SUFDN0MscUJBQ0UsOERBQUNDO1FBQUtDLE1BQUs7UUFBS0MsV0FBV1YsOEtBQWM7a0JBQ3ZDLDRFQUFDWTtZQUFLRixXQUFVOztnQkFDYkg7OEJBQ0QsOERBQUNMLG9FQUFnQkE7Ozs7O2dCQUFHOzhCQUNwQiw4REFBQ0QsOERBQVVBOzs7Ozs7Ozs7Ozs7Ozs7O0FBSW5CIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vYXV0aC1hcHAvLi9hcHAvbGF5b3V0LmpzeD8wYzgxIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBcIi4vZ2xvYmFscy5jc3NcIjtcbmltcG9ydCB7IEludGVyIH0gZnJvbSBcIm5leHQvZm9udC9nb29nbGVcIjtcbmltcG9ydCBBcHBUb2FzdGVyIGZyb20gXCJAL2NvbXBvbmVudHMvQXBwVG9hc3RlclwiOyAvLyB5b3VyIHRvYXN0ZXIgd3JhcHBlclxuaW1wb3J0IFN1cGFiYXNlTGlzdGVuZXIgZnJvbSBcIkAvY29tcG9uZW50cy9TdXBhYmFzZUxpc3RlbmVyXCI7IC8vIOKshe+4jyBhZGQgdGhpc1xuXG5jb25zdCBpbnRlciA9IEludGVyKHsgc3Vic2V0czogW1wibGF0aW5cIl0sIHZhcmlhYmxlOiBcIi0tZm9udC1pbnRlclwiIH0pO1xuXG5leHBvcnQgY29uc3QgbWV0YWRhdGEgPSB7IHRpdGxlOiBcIkF1dGhcIiwgZGVzY3JpcHRpb246IFwiTG9naW4gLyBTaWduIHVwXCIgfTtcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gUm9vdExheW91dCh7IGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8aHRtbCBsYW5nPVwiZW5cIiBjbGFzc05hbWU9e2ludGVyLnZhcmlhYmxlfT5cbiAgICAgIDxib2R5IGNsYXNzTmFtZT1cImFudGlhbGlhc2VkIGJnLW5ldXRyYWwtOTUwIHRleHQtbmV1dHJhbC0xMDBcIj5cbiAgICAgICAge2NoaWxkcmVufVxuICAgICAgICA8U3VwYWJhc2VMaXN0ZW5lciAvPiAgIHsvKiDirIXvuI8ga2VlcHMgc2VydmVyIGNvb2tpZXMgaW4gc3luYyAqL31cbiAgICAgICAgPEFwcFRvYXN0ZXIgLz5cbiAgICAgIDwvYm9keT5cbiAgICA8L2h0bWw+XG4gICk7XG59XG4iXSwibmFtZXMiOlsiaW50ZXIiLCJBcHBUb2FzdGVyIiwiU3VwYWJhc2VMaXN0ZW5lciIsIm1ldGFkYXRhIiwidGl0bGUiLCJkZXNjcmlwdGlvbiIsIlJvb3RMYXlvdXQiLCJjaGlsZHJlbiIsImh0bWwiLCJsYW5nIiwiY2xhc3NOYW1lIiwidmFyaWFibGUiLCJib2R5Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./app/layout.jsx\n");
 
 /***/ }),
 
@@ -180,6 +290,35 @@ const __default__ = proxy.default;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/workspaces/login-signup/components/AppToaster.jsx#default`));
 
 
+/***/ }),
+
+/***/ "(rsc)/./components/SupabaseListener.jsx":
+/*!*****************************************!*\
+  !*** ./components/SupabaseListener.jsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   $$typeof: () => (/* binding */ $$typeof),
+/* harmony export */   __esModule: () => (/* binding */ __esModule),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/build/webpack/loaders/next-flight-loader/module-proxy */ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/module-proxy.js");
+
+const proxy = (0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/workspaces/login-signup/components/SupabaseListener.jsx`)
+
+// Accessing the __esModule property and exporting $$typeof are required here.
+// The __esModule getter forces the proxy target to create the default export
+// and the $$typeof value is for rendering logic to determine if the module
+// is a client boundary.
+const { __esModule, $$typeof } = proxy;
+const __default__ = proxy.default;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/workspaces/login-signup/components/SupabaseListener.jsx#default`));
+
+
 /***/ })
 
 };
@@ -189,7 +328,7 @@ const __default__ = proxy.default;
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc","vendor-chunks/sonner"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fworkspaces%2Flogin-signup%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fworkspaces%2Flogin-signup&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@supabase","vendor-chunks/tr46","vendor-chunks/whatwg-url","vendor-chunks/set-cookie-parser","vendor-chunks/webidl-conversions","vendor-chunks/jose","vendor-chunks/sonner","vendor-chunks/@swc"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fworkspaces%2Flogin-signup%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fworkspaces%2Flogin-signup&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
 module.exports = __webpack_exports__;
 
 })();

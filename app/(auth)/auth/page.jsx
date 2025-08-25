@@ -10,9 +10,7 @@ export default async function AuthPage() {
   const supabase = createServerComponentClient({ cookies });
   const { data: { session } } = await supabase.auth.getSession();
 
-  if (session) {
-    redirect("/dashboard");
-  }
+  if (session) redirect("/dashboard");
 
   return <AuthCard />;
 }
