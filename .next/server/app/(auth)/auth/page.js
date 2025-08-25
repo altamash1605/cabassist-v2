@@ -89,6 +89,28 @@ module.exports = require("next/dist/compiled/next-server/app-page.runtime.dev.js
 
 /***/ }),
 
+/***/ "buffer":
+/*!*************************!*\
+  !*** external "buffer" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("buffer");
+
+/***/ }),
+
+/***/ "crypto":
+/*!*************************!*\
+  !*** external "crypto" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("crypto");
+
+/***/ }),
+
 /***/ "http":
 /*!***********************!*\
   !*** external "http" ***!
@@ -280,7 +302,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ AuthPage),\n/* harmony export */   metadata: () => (/* binding */ metadata)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_AuthCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/AuthCard */ \"(rsc)/./components/AuthCard.jsx\");\n\n\nconst metadata = {\n    title: \"Auth | Login / Sign up\"\n};\nfunction AuthPage() {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_AuthCard__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {}, void 0, false, {\n        fileName: \"/workspaces/login-signup/app/(auth)/auth/page.jsx\",\n        lineNumber: 8,\n        columnNumber: 10\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9hcHAvKGF1dGgpL2F1dGgvcGFnZS5qc3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQTZDO0FBRXRDLE1BQU1DLFdBQVc7SUFDdEJDLE9BQU87QUFDVCxFQUFFO0FBRWEsU0FBU0M7SUFDdEIscUJBQU8sOERBQUNILDREQUFRQTs7Ozs7QUFDbEIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9hdXRoLWFwcC8uL2FwcC8oYXV0aCkvYXV0aC9wYWdlLmpzeD81OWM1Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBBdXRoQ2FyZCBmcm9tIFwiQC9jb21wb25lbnRzL0F1dGhDYXJkXCI7XG5cbmV4cG9ydCBjb25zdCBtZXRhZGF0YSA9IHtcbiAgdGl0bGU6IFwiQXV0aCB8IExvZ2luIC8gU2lnbiB1cFwiXG59O1xuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBBdXRoUGFnZSgpIHtcbiAgcmV0dXJuIDxBdXRoQ2FyZCAvPjtcbn1cblxuIl0sIm5hbWVzIjpbIkF1dGhDYXJkIiwibWV0YWRhdGEiLCJ0aXRsZSIsIkF1dGhQYWdlIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./app/(auth)/auth/page.jsx\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ AuthPage),\n/* harmony export */   metadata: () => (/* binding */ metadata)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_AuthCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/AuthCard */ \"(rsc)/./components/AuthCard.jsx\");\n/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/navigation */ \"(rsc)/./node_modules/next/dist/api/navigation.react-server.js\");\n/* harmony import */ var next_headers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/headers */ \"(rsc)/./node_modules/next/dist/api/headers.js\");\n/* harmony import */ var _supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @supabase/auth-helpers-nextjs */ \"(rsc)/./node_modules/@supabase/auth-helpers-nextjs/dist/index.js\");\n/* harmony import */ var _supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_4__);\n// app/(auth)/auth/page.jsx\n\n\n\n\n\nconst metadata = {\n    title: \"Auth | Login / Sign up\"\n};\nasync function AuthPage() {\n    const supabase = (0,_supabase_auth_helpers_nextjs__WEBPACK_IMPORTED_MODULE_4__.createServerComponentClient)({\n        cookies: next_headers__WEBPACK_IMPORTED_MODULE_3__.cookies\n    });\n    const { data: { session } } = await supabase.auth.getSession();\n    if (session) {\n        (0,next_navigation__WEBPACK_IMPORTED_MODULE_2__.redirect)(\"/dashboard\");\n    }\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_AuthCard__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {}, void 0, false, {\n        fileName: \"/workspaces/login-signup/app/(auth)/auth/page.jsx\",\n        lineNumber: 17,\n        columnNumber: 10\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9hcHAvKGF1dGgpL2F1dGgvcGFnZS5qc3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0FBQUEsMkJBQTJCOztBQUNrQjtBQUNGO0FBQ0o7QUFDcUM7QUFFckUsTUFBTUksV0FBVztJQUFFQyxPQUFPO0FBQXlCLEVBQUU7QUFFN0MsZUFBZUM7SUFDNUIsTUFBTUMsV0FBV0osMEZBQTJCQSxDQUFDO1FBQUVELE9BQU9BLG1EQUFBQTtJQUFDO0lBQ3ZELE1BQU0sRUFBRU0sTUFBTSxFQUFFQyxPQUFPLEVBQUUsRUFBRSxHQUFHLE1BQU1GLFNBQVNHLElBQUksQ0FBQ0MsVUFBVTtJQUU1RCxJQUFJRixTQUFTO1FBQ1hSLHlEQUFRQSxDQUFDO0lBQ1g7SUFFQSxxQkFBTyw4REFBQ0QsNERBQVFBOzs7OztBQUNsQiIsInNvdXJjZXMiOlsid2VicGFjazovL2F1dGgtYXBwLy4vYXBwLyhhdXRoKS9hdXRoL3BhZ2UuanN4PzU5YzUiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gYXBwLyhhdXRoKS9hdXRoL3BhZ2UuanN4XG5pbXBvcnQgQXV0aENhcmQgZnJvbSBcIkAvY29tcG9uZW50cy9BdXRoQ2FyZFwiO1xuaW1wb3J0IHsgcmVkaXJlY3QgfSBmcm9tIFwibmV4dC9uYXZpZ2F0aW9uXCI7XG5pbXBvcnQgeyBjb29raWVzIH0gZnJvbSBcIm5leHQvaGVhZGVyc1wiO1xuaW1wb3J0IHsgY3JlYXRlU2VydmVyQ29tcG9uZW50Q2xpZW50IH0gZnJvbSBcIkBzdXBhYmFzZS9hdXRoLWhlbHBlcnMtbmV4dGpzXCI7XG5cbmV4cG9ydCBjb25zdCBtZXRhZGF0YSA9IHsgdGl0bGU6IFwiQXV0aCB8IExvZ2luIC8gU2lnbiB1cFwiIH07XG5cbmV4cG9ydCBkZWZhdWx0IGFzeW5jIGZ1bmN0aW9uIEF1dGhQYWdlKCkge1xuICBjb25zdCBzdXBhYmFzZSA9IGNyZWF0ZVNlcnZlckNvbXBvbmVudENsaWVudCh7IGNvb2tpZXMgfSk7XG4gIGNvbnN0IHsgZGF0YTogeyBzZXNzaW9uIH0gfSA9IGF3YWl0IHN1cGFiYXNlLmF1dGguZ2V0U2Vzc2lvbigpO1xuXG4gIGlmIChzZXNzaW9uKSB7XG4gICAgcmVkaXJlY3QoXCIvZGFzaGJvYXJkXCIpO1xuICB9XG5cbiAgcmV0dXJuIDxBdXRoQ2FyZCAvPjtcbn1cbiJdLCJuYW1lcyI6WyJBdXRoQ2FyZCIsInJlZGlyZWN0IiwiY29va2llcyIsImNyZWF0ZVNlcnZlckNvbXBvbmVudENsaWVudCIsIm1ldGFkYXRhIiwidGl0bGUiLCJBdXRoUGFnZSIsInN1cGFiYXNlIiwiZGF0YSIsInNlc3Npb24iLCJhdXRoIiwiZ2V0U2Vzc2lvbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./app/(auth)/auth/page.jsx\n");
 
 /***/ }),
 
@@ -360,7 +382,7 @@ const __default__ = proxy.default;
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc","vendor-chunks/@supabase","vendor-chunks/tr46","vendor-chunks/sonner","vendor-chunks/whatwg-url","vendor-chunks/lucide-react","vendor-chunks/webidl-conversions"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F(auth)%2Fauth%2Fpage&page=%2F(auth)%2Fauth%2Fpage&appPaths=%2F(auth)%2Fauth%2Fpage&pagePath=private-next-app-dir%2F(auth)%2Fauth%2Fpage.jsx&appDir=%2Fworkspaces%2Flogin-signup%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fworkspaces%2Flogin-signup&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc","vendor-chunks/sonner","vendor-chunks/@supabase","vendor-chunks/tr46","vendor-chunks/whatwg-url","vendor-chunks/lucide-react","vendor-chunks/webidl-conversions","vendor-chunks/jose","vendor-chunks/set-cookie-parser"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F(auth)%2Fauth%2Fpage&page=%2F(auth)%2Fauth%2Fpage&appPaths=%2F(auth)%2Fauth%2Fpage&pagePath=private-next-app-dir%2F(auth)%2Fauth%2Fpage.jsx&appDir=%2Fworkspaces%2Flogin-signup%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fworkspaces%2Flogin-signup&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
 module.exports = __webpack_exports__;
 
 })();
