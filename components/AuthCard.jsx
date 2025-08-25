@@ -9,6 +9,7 @@ import GoogleButton from "./GoogleButton";
 import { Sparkles, HelpCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Brand from "@/components/Brand";
 
 
 export default function AuthCard() {
@@ -74,9 +75,8 @@ export default function AuthCard() {
         <div className="relative w-full max-w-md">
           {/* Brand */}
           <div className="mb-8 flex items-center gap-3">
-            <div className="h-9 w-9 grid place-items-center rounded-lg bg-neutral-900 ring-1 ring-neutral-800 text-neutral-200 tracking-tight">
-              <span className="text-sm font-semibold">AX</span>
-            </div>
+            {/* SVG brand */}
+            <Brand />
             <div>
               <h1 className="text-2xl sm:text-3xl tracking-tight font-semibold">Welcome</h1>
               <p className="text-sm text-neutral-400">Log in or create your account</p>

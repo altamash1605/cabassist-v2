@@ -2,15 +2,15 @@
 
 import { Home, FolderOpen, Users, Settings } from "lucide-react";
 import Link from "next/link";
+import Brand from "@/components/Brand";
+
 
 export default function Sidebar() {
   return (
     <aside className="hidden lg:flex flex-col min-h-screen bg-neutral-950/60 border-r border-neutral-900 p-4">
       {/* Brand */}
       <div className="mb-6 flex items-center gap-3">
-        <div className="h-9 w-9 grid place-items-center rounded-lg bg-neutral-900 ring-1 ring-neutral-800 text-neutral-200 tracking-tight">
-          <span className="text-sm font-semibold">AX</span>
-        </div>
+        <Brand />
         <div className="text-sm text-neutral-400">Workspace</div>
       </div>
 
