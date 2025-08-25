@@ -7,39 +7,45 @@ import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import GoogleButton from "./GoogleButton";
 import { Sparkles, HelpCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
 
 export default function AuthCard() {
   const supabase = useMemo(() => getBrowserClient(), []);
+  const router = useRouter();
   const [mode, setMode] = useState("login"); // "login" | "signup"
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const [message, setMessage] = useState(null);
 
-  useEffect(() => {
-    setMessage(null);
-  }, [mode]);
 
   async function handleEmailPassword() {
+    if (!email || !password) {
+      toast.info("Enter email and password");
+      return;
+    }
     setBusy(true);
-    setMessage(null);
+    const t = toast.loading(mode === "login" ? "Logging in..." : "Creating your account...");
     try {
       if (mode === "login") {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        setMessage({ type: "success", text: "Logged in. Redirecting..." });
-        // TODO: router.push("/dashboard")
+        toast.success("Logged in. Redirecting...", { id: t });
+        router.push("/dashboard");
       } else {
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
-        setMessage({ type: "success", text: "Sign up successful. Check your inbox for confirmation." });
+        // If email confirmations are enabled, user must confirm first
+        toast.success("Sign up successful. Check your email to confirm.", { id: t });
       }
     } catch (err) {
-      setMessage({ type: "error", text: err.message || "Something went wrong." });
+      toast.error(err?.message || "Something went wrong.", { id: t });
     } finally {
       setBusy(false);
     }
   }
+
 
   async function handleGoogle() {
     setBusy(true);
@@ -159,12 +165,7 @@ export default function AuthCard() {
                 </div>
               )}
 
-              {/* Status message */}
-              {message && (
-                <p className={`mt-4 text-sm ${message.type === "error" ? "text-red-400" : "text-emerald-400"}`}>
-                  {message.text}
-                </p>
-              )}
+
             </div>
 
             {/* Footnote */}
