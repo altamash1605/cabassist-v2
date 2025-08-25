@@ -16,7 +16,7 @@ function useMediaQuery(query) {
 }
 
 export default function AppToaster() {
-  // Tailwind 'sm' breakpoint = 640px
+  // Tailwind 'sm' = 640px
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
@@ -25,12 +25,18 @@ export default function AppToaster() {
       theme="dark"
       richColors
       closeButton
-      // Optional styling to match your glass theme
+      // tighten spacing a touch if you like
+      offset={12}
       toastOptions={{
         classNames: {
-          toast: "rounded-xl border border-neutral-800 bg-neutral-900/90 backdrop-blur",
+          // Make the toast *slightly* narrower on mobile
+          toast: `${
+            isMobile ? "w-[93vw] max-w-[93vw]" : "w-auto max-w-[93vw]"
+          } rounded-xl border border-neutral-800/80 bg-neutral-900/90 backdrop-blur px-3 py-3`,
           title: "text-neutral-100",
-          description: "text-neutral-300"
+          description: "text-neutral-300",
+          actionButton: "rounded-lg",
+          cancelButton: "rounded-lg"
         }
       }}
     />
