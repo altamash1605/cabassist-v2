@@ -250,6 +250,7 @@ export default function CSVGenerator() {
           {/* Employee IDs */}
           <label className="block text-sm text-neutral-300 mb-2">Employee IDs (comma, space or new line)</label>
           <textarea
+          data-tour='ids'
             value={employeeInput}
             onChange={e => setEmployeeInput(e.target.value)}
             className="w-full h-28 rounded-xl border border-neutral-800 bg-neutral-900/80 px-3 py-2 text-sm text-neutral-200 placeholder-neutral-500 outline-none focus:border-neutral-700 focus:ring-2 focus:ring-indigo-500/40"
@@ -257,7 +258,7 @@ export default function CSVGenerator() {
           />
 
           {/* Dates */}
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 " data-tour="dates">
             <div>
               <label className="block text-sm text-neutral-300 mb-2">Shift start date</label>
               <input
@@ -279,7 +280,7 @@ export default function CSVGenerator() {
           </div>
 
           {/* Times */}
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4" data-tour="times">
             <div>
               <label className="block text-sm text-neutral-300 mb-2">Shift login (24h)</label>
               <input
@@ -303,7 +304,7 @@ export default function CSVGenerator() {
           </div>
 
           {/* Days to skip */}
-          <div className="mt-4">
+          <div className="mt-4" data-tour="options">
             <label className="block text-sm text-neutral-300 mb-2">Days to skip</label>
             <div className="flex flex-wrap gap-2">
               {DAY_LABELS.map((label, i) => (
@@ -337,7 +338,7 @@ export default function CSVGenerator() {
           </div>
 
           {/* Actions */}
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3" data-tour="export">
             <button
               onClick={downloadCSV}
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-indigo-600 to-indigo-700 px-4 py-2.5 text-sm font-medium text-white shadow-[0_6px_16px_-6px_rgba(99,102,241,0.6)] hover:from-indigo-500 hover:to-indigo-600"

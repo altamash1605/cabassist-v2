@@ -1,28 +1,42 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Bell, ChevronDown, LogOut, Mail, User } from "lucide-react";
+import { Bell, ChevronDown, LogOut, Mail, User, Sparkles } from "lucide-react";
 
-export default function Topbar({ email, onSignOut }) {
-  const [open, setOpen] = useState(false);
-  const menuRef = useRef(null);
-  const btnRef = useRef(null);
+export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, onDismissNew }) {
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
 
-  // Close dropdown on outside click or Escape
+  const userBtnRef = useRef(null);
+  const userMenuRef = useRef(null);
+  const bellBtnRef = useRef(null);
+  const notifRef = useRef(null);
+
+  // Close dropdowns on outside click / Escape
   useEffect(() => {
     function onDocClick(e) {
-      if (!open) return;
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(e.target) &&
-        btnRef.current &&
-        !btnRef.current.contains(e.target)
-      ) {
-        setOpen(false);
+      if (userMenuOpen) {
+        if (
+          userMenuRef.current &&
+          !userMenuRef.current.contains(e.target) &&
+          userBtnRef.current &&
+          !userBtnRef.current.contains(e.target)
+        ) setUserMenuOpen(false);
+      }
+      if (notifOpen) {
+        if (
+          notifRef.current &&
+          !notifRef.current.contains(e.target) &&
+          bellBtnRef.current &&
+          !bellBtnRef.current.contains(e.target)
+        ) setNotifOpen(false);
       }
     }
     function onKey(e) {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setUserMenuOpen(false);
+        setNotifOpen(false);
+      }
     }
     document.addEventListener("mousedown", onDocClick);
     document.addEventListener("keydown", onKey);
@@ -30,7 +44,7 @@ export default function Topbar({ email, onSignOut }) {
       document.removeEventListener("mousedown", onDocClick);
       document.removeEventListener("keydown", onKey);
     };
-  }, [open]);
+  }, [userMenuOpen, notifOpen]);
 
   return (
     <header className="sticky top-0 z-20 border-b border-neutral-900 bg-neutral-950/70 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/50">
@@ -43,13 +57,70 @@ export default function Topbar({ email, onSignOut }) {
 
         {/* Right actions */}
         <div className="flex items-center gap-3">
-          {/* Notifications (always visible) */}
-          <button
-            className="rounded-xl border border-neutral-800 bg-neutral-950/60 p-2 hover:border-neutral-700"
-            aria-label="Notifications"
-          >
-            <Bell className="h-4 w-4 text-neutral-300" />
-          </button>
+          {/* Notifications */}
+          <div className="relative">
+            <button
+              ref={bellBtnRef}
+              onClick={() => {
+                setNotifOpen(v => !v);
+                setUserMenuOpen(false);
+              }}
+              className="relative rounded-xl border border-neutral-800 bg-neutral-950/60 p-2 hover:border-neutral-700"
+              aria-label="Notifications"
+              aria-haspopup="menu"
+              aria-expanded={notifOpen}
+            >
+              <Bell className="h-4 w-4 text-neutral-300" />
+              {hasNew && (
+                <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-neutral-950" />
+              )}
+            </button>
+
+            {notifOpen && (
+              <div
+                ref={notifRef}
+                role="menu"
+                className="absolute right-0 mt-2 w-80 rounded-xl border border-neutral-900 bg-neutral-900/95 backdrop-blur shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] z-30 overflow-hidden"
+              >
+                <div className="px-4 py-3 border-b border-neutral-800 flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-indigo-300" />
+                  <div className="text-sm font-medium text-neutral-200">Notifications</div>
+                </div>
+
+                {hasNew ? (
+                  <div className="px-4 py-3 text-sm text-neutral-300">
+                    <p className="leading-relaxed">
+                      Welcome! Want a 1-minute tour of the app?
+                    </p>
+                    <div className="mt-3 flex gap-2">
+                      <button
+                        onClick={() => {
+                          setNotifOpen(false);
+                          onStartTour?.();
+                        }}
+                        className="rounded-xl bg-gradient-to-b from-indigo-600 to-indigo-700 px-3 py-2 text-xs font-medium text-white hover:from-indigo-500 hover:to-indigo-600"
+                      >
+                        Start tour
+                      </button>
+                      <button
+                        onClick={() => {
+                          setNotifOpen(false);
+                          onDismissNew?.();
+                        }}
+                        className="rounded-xl border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-xs hover:border-neutral-700"
+                      >
+                        Dismiss
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="px-4 py-3 text-sm text-neutral-400">
+                    You’re all caught up.
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
 
           {/* Desktop: email + sign out */}
           <div className="hidden sm:flex items-center gap-3">
@@ -62,14 +133,17 @@ export default function Topbar({ email, onSignOut }) {
             </button>
           </div>
 
-          {/* Mobile: avatar/menu button + dropdown */}
+          {/* Mobile: user dropdown */}
           <div className="relative sm:hidden">
             <button
-              ref={btnRef}
-              onClick={() => setOpen(o => !o)}
+              ref={userBtnRef}
+              onClick={() => {
+                setUserMenuOpen(v => !v);
+                setNotifOpen(false);
+              }}
               className="inline-flex items-center gap-1 rounded-xl border border-neutral-800 bg-neutral-950/60 px-2.5 py-2 hover:border-neutral-700"
               aria-haspopup="menu"
-              aria-expanded={open}
+              aria-expanded={userMenuOpen}
               aria-controls="mobile-user-menu"
             >
               <User className="h-4 w-4 text-neutral-300" />
@@ -77,10 +151,10 @@ export default function Topbar({ email, onSignOut }) {
               <span className="sr-only">Open user menu</span>
             </button>
 
-            {open && (
+            {userMenuOpen && (
               <div
                 id="mobile-user-menu"
-                ref={menuRef}
+                ref={userMenuRef}
                 role="menu"
                 className="absolute right-0 mt-2 w-60 rounded-xl border border-neutral-900 bg-neutral-900/95 backdrop-blur shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] z-30 overflow-hidden"
               >
@@ -94,10 +168,7 @@ export default function Topbar({ email, onSignOut }) {
 
                 <button
                   role="menuitem"
-                  onClick={() => {
-                    setOpen(false);
-                    onSignOut();
-                  }}
+                  onClick={onSignOut}
                   className="w-full inline-flex items-center gap-2 px-4 py-3 text-sm text-neutral-200 hover:bg-neutral-800/60"
                 >
                   <LogOut className="h-4 w-4 text-neutral-300" />
