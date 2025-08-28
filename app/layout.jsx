@@ -5,6 +5,12 @@ import SupabaseListener from "@/components/SupabaseListener"; // ⬅️ add this
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+export const metadata = {
+  title: "AX Scheduler",
+  description: "Generate clean CSV schedules fast",
+  manifest: "/manifest.json",
+  themeColor: "#0a0a0a"
+};
 export const metadata = { title: "Auth", description: "Login / Sign up" };
 
 export default function RootLayout({ children }) {
