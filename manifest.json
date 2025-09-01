@@ -1,11 +1,11 @@
 {
-  "name": "AX Scheduler",
-  "short_name": "AX",
+  "name": "CabAssist",
+  "short_name": "CA",
   "description": "Generate MoveInSync-ready schedules quickly.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "background_color": "#800080",
+  "theme_color": "#800080",
   "orientation": "portrait",
   "icons": [
     {
