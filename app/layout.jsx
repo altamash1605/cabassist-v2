@@ -11,7 +11,6 @@ export const metadata = {
   manifest: "/manifest.json",
   themeColor: "#800080"
 };
-export const metadata = { title: "Auth", description: "Login / Sign up" };
 
 export default function RootLayout({ children }) {
   return (
