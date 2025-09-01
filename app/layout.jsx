@@ -6,10 +6,10 @@ import SupabaseListener from "@/components/SupabaseListener"; // ⬅️ add this
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata = {
-  title: "AX Scheduler",
+  title: "CabAssist - CSV Generator",
   description: "Generate clean CSV schedules fast",
   manifest: "/manifest.json",
-  themeColor: "#0a0a0a"
+  themeColor: "#800080"
 };
 export const metadata = { title: "Auth", description: "Login / Sign up" };
 
