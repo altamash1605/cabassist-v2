@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, FolderOpen, Users, Settings } from "lucide-react";
+import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Brand from "@/components/Brand";
@@ -24,9 +24,6 @@ export default function Sidebar() {
           href="/dashboard"
           active={pathname === "/dashboard"}
         />
-        <NavItem icon={<FolderOpen className="h-4 w-4" />} label="Projects" href="#" />
-        <NavItem icon={<Users className="h-4 w-4" />} label="Team" href="#" />
-        <NavItem icon={<Settings className="h-4 w-4" />} label="Settings" href="#" />
       </nav>
 
       {/* Footer badge */}
