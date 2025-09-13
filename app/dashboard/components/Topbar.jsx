@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Bell, ChevronDown, LogOut, Mail, User, Sparkles } from "lucide-react";
-import { toast } from "sonner"; // ⬅️ import toast
 
 export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, onDismissNew }) {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -22,8 +21,7 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
           !userMenuRef.current.contains(e.target) &&
           userBtnRef.current &&
           !userBtnRef.current.contains(e.target)
-        )
-          setUserMenuOpen(false);
+        ) setUserMenuOpen(false);
       }
       if (notifOpen) {
         if (
@@ -31,8 +29,7 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
           !notifRef.current.contains(e.target) &&
           bellBtnRef.current &&
           !bellBtnRef.current.contains(e.target)
-        )
-          setNotifOpen(false);
+        ) setNotifOpen(false);
       }
     }
     function onKey(e) {
@@ -49,16 +46,6 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
     };
   }, [userMenuOpen, notifOpen]);
 
-  // Wrapper for sign out with toast
-  const handleSignOut = async () => {
-    try {
-      await onSignOut?.();
-      toast.success("Signed out successfully");
-    } catch (err) {
-      toast.error("Error signing out");
-    }
-  };
-
   return (
     <header className="sticky top-0 z-20 border-b border-neutral-900 bg-neutral-950/70 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/50">
       <div className="h-16 px-6 sm:px-10 flex items-center justify-between">
@@ -72,14 +59,74 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
         <div className="flex items-center gap-3">
           {/* Notifications */}
           <div className="relative">
-            {/* ... unchanged ... */}
+            <button
+              ref={bellBtnRef}
+              onClick={() => {
+                setNotifOpen(v => !v);
+                setUserMenuOpen(false);
+              }}
+              className="relative rounded-xl border border-neutral-800 bg-neutral-950/60 p-2 hover:border-neutral-700"
+              aria-label="Notifications"
+              aria-haspopup="menu"
+              aria-expanded={notifOpen}
+            >
+              <Bell className="h-4 w-4 text-neutral-300" />
+              {hasNew && (
+                <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-neutral-950" />
+              )}
+            </button>
+
+            {notifOpen && (
+              <div
+                ref={notifRef}
+                role="menu"
+                className="absolute right-0 mt-2 w-80 rounded-xl border border-neutral-900 bg-neutral-900/95 backdrop-blur shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] z-30 overflow-hidden"
+              >
+                <div className="px-4 py-3 border-b border-neutral-800 flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-indigo-300" />
+                  <div className="text-sm font-medium text-neutral-200">Notifications</div>
+                </div>
+
+                {hasNew ? (
+                  <div className="px-4 py-3 text-sm text-neutral-300">
+                    <p className="leading-relaxed">
+                      Welcome! Want a 1-minute tour of the app?
+                    </p>
+                    <div className="mt-3 flex gap-2">
+                      <button
+                        onClick={() => {
+                          setNotifOpen(false);
+                          onStartTour?.();
+                        }}
+                        className="rounded-xl bg-gradient-to-b from-indigo-600 to-indigo-700 px-3 py-2 text-xs font-medium text-white hover:from-indigo-500 hover:to-indigo-600"
+                      >
+                        Start tour
+                      </button>
+                      <button
+                        onClick={() => {
+                          setNotifOpen(false);
+                          onDismissNew?.();
+                        }}
+                        className="rounded-xl border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-xs hover:border-neutral-700"
+                      >
+                        Dismiss
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="px-4 py-3 text-sm text-neutral-400">
+                    You’re all caught up.
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Desktop: email + sign out */}
           <div className="hidden sm:flex items-center gap-3">
             <div className="text-sm text-neutral-300">{email}</div>
             <button
-              onClick={handleSignOut} // ⬅️ use wrapper
+              onClick={onSignOut}
               className="rounded-xl border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-sm hover:border-neutral-700"
             >
               Sign out
@@ -121,7 +168,7 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
 
                 <button
                   role="menuitem"
-                  onClick={handleSignOut} // ⬅️ use wrapper
+                  onClick={onSignOut}
                   className="w-full inline-flex items-center gap-2 px-4 py-3 text-sm text-neutral-200 hover:bg-neutral-800/60"
                 >
                   <LogOut className="h-4 w-4 text-neutral-300" />
