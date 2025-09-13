@@ -2,10 +2,12 @@
 
 import { Home, FolderOpen, Users, Settings } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Brand from "@/components/Brand";
 
-
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <aside className="hidden lg:flex flex-col min-h-screen bg-neutral-950/60 border-r border-neutral-900 p-4">
       {/* Brand */}
@@ -16,7 +18,12 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav className="space-y-1">
-        <NavItem icon={<Home className="h-4 w-4" />} label="Overview" href="/dashboard" active />
+        <NavItem
+          icon={<Home className="h-4 w-4" />}
+          label="Overview"
+          href="/dashboard"
+          active={pathname === "/dashboard"}
+        />
         <NavItem icon={<FolderOpen className="h-4 w-4" />} label="Projects" href="#" />
         <NavItem icon={<Users className="h-4 w-4" />} label="Team" href="#" />
         <NavItem icon={<Settings className="h-4 w-4" />} label="Settings" href="#" />
