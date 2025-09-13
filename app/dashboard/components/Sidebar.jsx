@@ -1,6 +1,6 @@
 "use client";
 
-import { Home } from "lucide-react";
+import { Home, CalendarCog } from "lucide-react";  // ⬅️ added CalendarCog
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Brand from "@/components/Brand";
@@ -23,6 +23,12 @@ export default function Sidebar() {
           label="Overview"
           href="/dashboard"
           active={pathname === "/dashboard"}
+        />
+        <NavItem
+          icon={<CalendarCog className="h-4 w-4" />}   // ⬅️ new
+          label="Customise Shifts"
+          href="/dashboard/shifts"                     // ⬅️ your new page
+          active={pathname.startsWith("/dashboard/shifts")}
         />
       </nav>
 

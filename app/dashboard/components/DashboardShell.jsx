@@ -4,8 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Joyride, { STATUS } from "react-joyride";
 import { getBrowserClient } from "@/lib/supabase-browser";
-import Sidebar from "./Sidebar";
-import Topbar from "./Topbar";
 import CSVGenerator from "./CSVGenerator";
 
 export default function DashboardShell() {
@@ -13,7 +11,7 @@ export default function DashboardShell() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
-  const [hasNew, setHasNew] = useState(false);   // red dot on bell
+  const [hasNew, setHasNew] = useState(false);   // red dot on bell (unused now but preserved)
   const [runTour, setRunTour] = useState(false); // joyride state
 
   useEffect(() => {
@@ -27,12 +25,13 @@ export default function DashboardShell() {
         return;
       }
       setEmail(data.user.email ?? "");
-      // show red dot if user hasn't seen the tour yet (metadata flag missing/false)
       const seen = !!data.user.user_metadata?.has_seen_tour;
       setHasNew(!seen);
       setLoading(false);
     })();
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, [supabase, router]);
 
   async function markTourSeen() {
@@ -42,22 +41,12 @@ export default function DashboardShell() {
     setHasNew(false);
   }
 
-  function startTour() {
-    setRunTour(true);
-  }
-
   function onTourEnd(data) {
     const finished = [STATUS.FINISHED, STATUS.SKIPPED].includes(data.status);
     if (finished) {
       setRunTour(false);
-      // user accepted or skipped → stop showing badge
       markTourSeen();
     }
-  }
-
-  async function signOut() {
-    await supabase.auth.signOut();
-    router.replace("/auth");
   }
 
   if (loading) {
@@ -73,7 +62,8 @@ export default function DashboardShell() {
     {
       target: '[data-tour="ids"]',
       title: "Add employees",
-      content: "Paste or type employee IDs. Commas, spaces, or new lines are all fine.",
+      content:
+        "Paste or type employee IDs. Commas, spaces, or new lines are all fine.",
       disableBeacon: true,
     },
     {
@@ -84,17 +74,20 @@ export default function DashboardShell() {
     {
       target: '[data-tour="times"]',
       title: "Set shift timings",
-      content: "Enter login and logout times. If it’s a night shift, turn on Next day logout.",
+      content:
+        "Enter login and logout times. If it’s a night shift, turn on Next day logout.",
     },
     {
       target: '[data-tour="options"]',
       title: "Skip days",
-      content: "Skip weekends or any weekdays you don’t need. The preview updates instantly.",
+      content:
+        "Skip weekends or any weekdays you don’t need. The preview updates instantly.",
     },
     {
       target: '[data-tour="export"]',
       title: "Preview & export",
-      content: "Download the CSV or share it. On desktop, the live preview is on the right.",
+      content:
+        "Download the CSV or share it. On desktop, the live preview is on the right.",
     },
   ];
 
@@ -115,7 +108,7 @@ export default function DashboardShell() {
             textColor: "#e5e5e5",
             backgroundColor: "#0f0f10",
             arrowColor: "#0f0f10",
-            overlayColor: "rgba(0,0,0,0.78)", // darker mask over the rest of the screen
+            overlayColor: "rgba(0,0,0,0.78)",
           },
           tooltip: {
             border: "1px solid #1f1f1f",
@@ -134,22 +127,9 @@ export default function DashboardShell() {
         callback={onTourEnd}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr]">
-        <Sidebar />
-        <main className="min-h-screen border-l border-neutral-900 bg-neutral-950/60">
-          <Topbar
-            email={email}
-            onSignOut={signOut}
-            hasNew={hasNew}
-            onStartTour={() => {
-              setRunTour(true);
-            }}
-            onDismissNew={markTourSeen}
-          />
-          <div className="px-6 sm:px-10 pb-12">
-            <CSVGenerator />
-          </div>
-        </main>
+      {/* Dashboard content */}
+      <div className="px-6 sm:px-10 pb-12">
+        <CSVGenerator />
       </div>
     </div>
   );
