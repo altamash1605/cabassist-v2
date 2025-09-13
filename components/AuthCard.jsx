@@ -5,12 +5,11 @@ import { useEffect, useMemo, useState } from "react";
 import { getBrowserClient } from "@/lib/supabase-browser";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
-import GoogleButton from "./GoogleButton";
+// import GoogleButton from "./GoogleButton";   // ⬅️ disabled for now
 import { Sparkles, HelpCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Brand from "@/components/Brand";
-
 
 export default function AuthCard() {
   const supabase = useMemo(() => getBrowserClient(), []);
@@ -19,7 +18,6 @@ export default function AuthCard() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-
 
   async function handleEmailPassword() {
     if (!email || !password) {
@@ -47,20 +45,19 @@ export default function AuthCard() {
     }
   }
 
-
-  async function handleGoogle() {
-    setBusy(true);
-    setMessage(null);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({ provider: "google" });
-      if (error) throw error;
-      // Redirect happens automatically via Supabase OAuth
-    } catch (err) {
-      setMessage({ type: "error", text: err.message || "Google sign-in failed." });
-    } finally {
-      setBusy(false);
-    }
-  }
+  // async function handleGoogle() {
+  //   setBusy(true);
+  //   setMessage(null);
+  //   try {
+  //     const { error } = await supabase.auth.signInWithOAuth({ provider: "google" });
+  //     if (error) throw error;
+  //     // Redirect happens automatically via Supabase OAuth
+  //   } catch (err) {
+  //     setMessage({ type: "error", text: err.message || "Google sign-in failed." });
+  //   } finally {
+  //     setBusy(false);
+  //   }
+  // }
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
@@ -124,7 +121,8 @@ export default function AuthCard() {
                     </button>
                   </div>
 
-                  {/* Divider */}
+                  {/* Divider + Google (disabled) */}
+                  {/*
                   <div className="relative my-4">
                     <div className="absolute inset-0 flex items-center">
                       <div className="w-full border-t border-neutral-800"></div>
@@ -135,6 +133,7 @@ export default function AuthCard() {
                   </div>
 
                   <GoogleButton onClick={handleGoogle} label="Sign in with Google" accent="indigo" />
+                  */}
                 </div>
               ) : (
                 <div className="space-y-5" aria-labelledby="signup-heading">
@@ -151,7 +150,8 @@ export default function AuthCard() {
                     </button>
                   </div>
 
-                  {/* Divider */}
+                  {/* Divider + Google (disabled) */}
+                  {/*
                   <div className="relative my-4">
                     <div className="absolute inset-0 flex items-center">
                       <div className="w-full border-t border-neutral-800"></div>
@@ -162,10 +162,9 @@ export default function AuthCard() {
                   </div>
 
                   <GoogleButton onClick={handleGoogle} label="Sign up with Google" accent="fuchsia" />
+                  */}
                 </div>
               )}
-
-
             </div>
 
             {/* Footnote */}
