@@ -132,7 +132,12 @@ export default function AuthCard() {
                 type="button"
                 disabled={busy}
                 onClick={handleEmailPassword}
-                className="w-full rounded-lg bg-indigo-600 py-2.5 text-white font-medium hover:bg-indigo-500 disabled:opacity-50 transition"
+                className={`w-full rounded-lg py-2.5 font-medium text-white transition disabled:opacity-50
+                  ${
+                    mode === "login"
+                      ? "bg-indigo-600 hover:bg-indigo-500 shadow-[0_0_20px_rgba(79,70,229,0.6)]"
+                      : "bg-fuchsia-600 hover:bg-fuchsia-500 shadow-[0_0_20px_rgba(192,38,211,0.6)]"
+                  }`}
               >
                 {mode === "login" ? "Log In" : "Sign Up"}
               </button>
