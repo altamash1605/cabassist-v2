@@ -7,7 +7,7 @@ import Brand from "@/components/Brand";
 
 
 export const metadata = {
-    title: "AX — Simple Scheduling",
+    title: "CabAssist - CSV Generator",
     description: "Generate clean schedules fast. Secure. Fast. Minimal."
 };
 

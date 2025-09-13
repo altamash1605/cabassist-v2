@@ -5,7 +5,7 @@ import SupabaseListener from "@/components/SupabaseListener"; // ⬅️ add this
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export const metadata = { title: "Auth", description: "Login / Sign up" };
+export const metadata = { title: "CabAssist", description: "CSV Generator" };
 
 export default function RootLayout({ children }) {
   return (
