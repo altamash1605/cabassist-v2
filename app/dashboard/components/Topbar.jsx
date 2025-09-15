@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Bell, ChevronDown, LogOut, Mail, User, Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, onDismissNew }) {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
+  const router = useRouter();
 
   const userBtnRef = useRef(null);
   const userMenuRef = useRef(null);
@@ -45,6 +47,12 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
       document.removeEventListener("keydown", onKey);
     };
   }, [userMenuOpen, notifOpen]);
+
+  async function handleSignOut() {
+    await onSignOut?.();
+    router.refresh();
+    router.push("/auth");
+  }
 
   return (
     <header className="sticky top-0 z-20 border-b border-neutral-900 bg-neutral-950/70 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/50">
@@ -126,7 +134,7 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
           <div className="hidden sm:flex items-center gap-3">
             <div className="text-sm text-neutral-300">{email}</div>
             <button
-              onClick={onSignOut}
+              onClick={handleSignOut}
               className="rounded-xl border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-sm hover:border-neutral-700"
             >
               Sign out
@@ -168,7 +176,7 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
 
                 <button
                   role="menuitem"
-                  onClick={onSignOut}
+                  onClick={handleSignOut}
                   className="w-full inline-flex items-center gap-2 px-4 py-3 text-sm text-neutral-200 hover:bg-neutral-800/60"
                 >
                   <LogOut className="h-4 w-4 text-neutral-300" />
