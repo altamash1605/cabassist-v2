@@ -3,5 +3,6 @@
   "/(auth)/auth/page": "app/(auth)/auth/page.js",
   "/(auth)/auth/callback/route": "app/(auth)/auth/callback/route.js",
   "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/account/page": "app/dashboard/account/page.js",
   "/dashboard/shifts/page": "app/dashboard/shifts/page.js"
 }

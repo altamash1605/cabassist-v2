@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, CalendarCog } from "lucide-react";  // ⬅️ added CalendarCog
+import { Home, CalendarCog, UserCog } from "lucide-react";  // ⬅️ added UserCog
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Brand from "@/components/Brand";
@@ -25,16 +25,26 @@ export default function Sidebar() {
           active={pathname === "/dashboard"}
         />
         <NavItem
-          icon={<CalendarCog className="h-4 w-4" />}   // ⬅️ new
+          icon={<CalendarCog className="h-4 w-4" />}
           label="Customise Shifts"
-          href="/dashboard/shifts"                     // ⬅️ your new page
+          href="/dashboard/shifts"
           active={pathname.startsWith("/dashboard/shifts")}
         />
       </nav>
 
-      {/* Footer badge */}
-      <div className="mt-auto pt-6 text-xs text-neutral-500">
-        v1.0 • Secure. Fast. Minimal.
+      {/* Manage Account button */}
+      <div className="mt-auto space-y-1">
+        <NavItem
+          icon={<UserCog className="h-4 w-4" />}
+          label="Manage Account"
+          href="/dashboard/account"   // ⬅️ new page
+          active={pathname.startsWith("/dashboard/account")}
+        />
+
+        {/* Footer badge */}
+        <div className="pt-6 text-xs text-neutral-500">
+          v1.0 • Secure. Fast. Minimal.
+        </div>
       </div>
     </aside>
   );

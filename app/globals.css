@@ -1,20 +1,23 @@
+/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Smooth text */
-html, body {
+html,
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* app/globals.css */
+/* Joyride overlay */
 .react-joyride__overlay {
-  background: rgba(0,0,0,0.78) !important;
+  background: rgba(0, 0, 0, 0.78) !important;
 }
 
-/* globals.css */
 
+
+/* Scrollbar styling */
 /* For Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   height: 8px;
@@ -40,4 +43,3 @@ html, body {
   scrollbar-width: thin;
   scrollbar-color: rgba(120, 120, 120, 0.5) transparent;
 }
-
