@@ -68,9 +68,9 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
 
   return (
     <header className="sticky top-0 z-20 border-b border-neutral-900 bg-neutral-950/70 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/50">
-      <div className="h-16 px-6 sm:px-10 flex items-center justify-between">
+      <div className="h-16 px-6 sm:px-10 flex items-center gap-2 md:justify-between  justify-end">
         {/* Left badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-300">
+        <div className="hidden md:inline-flex items-center md:gap-2 rounded-full border border-white/10 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-300">
           <span className="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
           You’re logged in
         </div>
