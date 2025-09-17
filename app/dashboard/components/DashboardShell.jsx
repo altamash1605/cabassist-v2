@@ -128,7 +128,7 @@ export default function DashboardShell() {
       />
 
       {/* Dashboard content */}
-      <div className="px-6 sm:px-10 pb-12">
+      <div className="px-6 sm:px-5 pb-12">
         <CSVGenerator />
       </div>
     </div>
