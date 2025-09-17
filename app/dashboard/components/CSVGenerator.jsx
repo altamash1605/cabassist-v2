@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import PreviewTable from "./PreviewTable";
 import { Download, Share2, Eye } from "lucide-react";
 import { toast } from "sonner";
+import { getBrowserClient } from "@/lib/supabase-browser";
 
 /** Utility helpers */
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -13,7 +14,7 @@ function parseEmployeeIds(raw) {
     new Set(
       raw
         .split(/[\s,;\n]+/)
-        .map(s => s.trim())
+        .map((s) => s.trim())
         .filter(Boolean)
     )
   );
@@ -38,7 +39,6 @@ function* eachDateInclusive(startISO, endISO) {
 }
 
 function buildRows({ ids, start, end, login, logout, skipDays, nextDayLogout }) {
-  // Helper: iterate dates inclusive, normalized to midnight
   function* days(startISO, endISO) {
     const d = new Date(startISO);
     const e = new Date(endISO);
@@ -49,16 +49,18 @@ function buildRows({ ids, start, end, login, logout, skipDays, nextDayLogout }) 
       d.setDate(d.getDate() + 1);
     }
   }
-  const toKey = (d) => { const x = new Date(d); x.setHours(0,0,0,0); return x.getTime(); };
+  const toKey = (d) => {
+    const x = new Date(d);
+    x.setHours(0, 0, 0, 0);
+    return x.getTime();
+  };
   const fromKey = (k) => new Date(k);
 
-  // Build the set of "working" days (login days), skipping selected weekdays
   const workKeys = [];
   for (const d of days(start, end)) {
     if (!skipDays.has(d.getDay())) workKeys.push(toKey(d));
   }
 
-  // If no next-day logic, put login+logout on the same day (simple case)
   if (!nextDayLogout) {
     const rows = [];
     for (const k of workKeys) {
@@ -78,42 +80,34 @@ function buildRows({ ids, start, end, login, logout, skipDays, nextDayLogout }) 
     return rows;
   }
 
-  // Next-day-logout logic:
-  // Map of dayKey -> { login: boolean, logout: boolean }
   const map = new Map();
 
-  // Mark login on each working day
   for (const k of workKeys) {
     const cur = map.get(k) || { login: false, logout: false };
     cur.login = true;
     map.set(k, cur);
   }
 
-  // Shift logout to the following day for each working day
   for (const k of workKeys) {
     const outKey = toKey(new Date(fromKey(k).setDate(fromKey(k).getDate() + 1)));
     const cur = map.get(outKey) || { login: false, logout: false };
-    cur.logout = !!logout; // only if a logout time was provided
+    cur.logout = !!logout;
     map.set(outKey, cur);
   }
 
-  // Sort all days we need to output (includes the extra trailing day)
   const allKeys = Array.from(map.keys()).sort((a, b) => a - b);
 
-  // Emit rows (login from today, logout from yesterday if present)
   const rows = [];
   for (const dayKey of allKeys) {
     const flags = map.get(dayKey);
     const shiftDate = formatDMY(fromKey(dayKey));
-
-    // If neither login nor logout exists for this day, skip
     if (!flags.login && !flags.logout) continue;
 
     for (const eid of ids) {
       rows.push({
         EmployeeId: eid,
-        LogIn: flags.login ? (login || "") : "",
-        LogOut: flags.logout ? (logout || "") : "",
+        LogIn: flags.login ? login || "" : "",
+        LogOut: flags.logout ? logout || "" : "",
         LogInVenue: "",
         LogOutVenue: "",
         ShiftDate: shiftDate,
@@ -125,29 +119,41 @@ function buildRows({ ids, start, end, login, logout, skipDays, nextDayLogout }) 
   return rows;
 }
 
-
 function toCSV(rows) {
-  const header = ["EmployeeId", "LogIn", "LogOut", "LogInVenue", "LogOutVenue", "ShiftDate", "EditType"];
+  const header = [
+    "EmployeeId",
+    "LogIn",
+    "LogOut",
+    "LogInVenue",
+    "LogOutVenue",
+    "ShiftDate",
+    "EditType",
+  ];
   const escape = (v) => {
     const s = String(v ?? "");
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-    };
+  };
   const lines = [header.join(",")];
   for (const r of rows) {
-    lines.push(header.map(h => escape(r[h])).join(","));
+    lines.push(header.map((h) => escape(r[h])).join(","));
   }
   return lines.join("\r\n");
 }
 
 export default function CSVGenerator() {
+  const supabase = useMemo(() => getBrowserClient(), []);
+
   // form state
   const [employeeInput, setEmployeeInput] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [loginTime, setLoginTime] = useState("");
   const [logoutTime, setLogoutTime] = useState("");
-  const [skip, setSkip] = useState(new Set()); // numbers 0..6 (Sun..Sat)
+  const [skip, setSkip] = useState(new Set());
   const [nextDay, setNextDay] = useState(false);
+
+  // saved shifts
+  const [savedShifts, setSavedShifts] = useState([]);
 
   // mobile preview panel
   const [showPreview, setShowPreview] = useState(false);
@@ -167,8 +173,31 @@ export default function CSVGenerator() {
     });
   }, [ids, startDate, endDate, loginTime, logoutTime, skip, nextDay]);
 
+  useEffect(() => {
+    async function loadShifts() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from("shifts")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
+
+      if (!error) setSavedShifts(data || []);
+    }
+    loadShifts();
+  }, [supabase]);
+
+  function applyShift(shift) {
+    setLoginTime(shift.start_time);
+    setLogoutTime(shift.end_time);
+  }
+
   function toggleSkip(dayIndex) {
-    setSkip(prev => {
+    setSkip((prev) => {
       const next = new Set(prev);
       if (next.has(dayIndex)) next.delete(dayIndex);
       else next.add(dayIndex);
@@ -212,7 +241,6 @@ export default function CSVGenerator() {
           files: [file],
         });
       } else {
-        // Fallback: just trigger download
         downloadCSV();
         return;
       }
@@ -227,9 +255,12 @@ export default function CSVGenerator() {
       {/* Header */}
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">CSV Generator</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+            CSV Generator
+          </h1>
           <p className="mt-1 text-sm text-neutral-400">
-            Generate MoveInSync schedule: EmployeeId, LogIn, LogOut, LogInVenue, LogOutVenue, ShiftDate, EditType
+            Generate MoveInSync schedule: EmployeeId, LogIn, LogOut, LogInVenue,
+            LogOutVenue, ShiftDate, EditType
           </p>
         </div>
 
@@ -248,64 +279,102 @@ export default function CSVGenerator() {
         {/* Left: form card */}
         <div className="rounded-2xl border border-neutral-900 bg-neutral-900/40 backdrop-blur p-5">
           {/* Employee IDs */}
-          <label className="block text-sm text-neutral-300 mb-2">Employee IDs (comma, space or new line)</label>
+          <label className="block text-sm text-neutral-300 mb-2">
+            Employee IDs (comma, space or new line)
+          </label>
           <textarea
-          data-tour='ids'
+            data-tour="ids"
             value={employeeInput}
-            onChange={e => setEmployeeInput(e.target.value)}
+            onChange={(e) => setEmployeeInput(e.target.value)}
             className="w-full h-28 rounded-xl border border-neutral-800 bg-neutral-900/80 px-3 py-2 text-sm text-neutral-200 placeholder-neutral-500 outline-none focus:border-neutral-700 focus:ring-2 focus:ring-indigo-500/40"
             placeholder="850969, 123456, 789012"
           />
 
           {/* Dates */}
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 " data-tour="dates">
+          <div
+            className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 "
+            data-tour="dates"
+          >
             <div>
-              <label className="block text-sm text-neutral-300 mb-2">Shift start date</label>
+              <label className="block text-sm text-neutral-300 mb-2">
+                Shift start date
+              </label>
               <input
                 type="date"
                 value={startDate}
-                onChange={e => setStartDate(e.target.value)}
+                onChange={(e) => setStartDate(e.target.value)}
                 className="w-full rounded-xl border border-neutral-800 bg-neutral-900/80 px-3 py-2 text-sm outline-none focus:border-neutral-700 focus:ring-2 focus:ring-indigo-500/40"
               />
             </div>
             <div>
-              <label className="block text-sm text-neutral-300 mb-2">Shift end date</label>
+              <label className="block text-sm text-neutral-300 mb-2">
+                Shift end date
+              </label>
               <input
                 type="date"
                 value={endDate}
-                onChange={e => setEndDate(e.target.value)}
+                onChange={(e) => setEndDate(e.target.value)}
                 className="w-full rounded-xl border border-neutral-800 bg-neutral-900/80 px-3 py-2 text-sm outline-none focus:border-neutral-700 focus:ring-2 focus:ring-indigo-500/40"
               />
             </div>
           </div>
 
           {/* Times */}
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4" data-tour="times">
+          <div
+            className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4"
+            data-tour="times"
+          >
             <div>
-              <label className="block text-sm text-neutral-300 mb-2">Shift login (24h)</label>
+              <label className="block text-sm text-neutral-300 mb-2">
+                Shift login (24h)
+              </label>
               <input
                 type="time"
                 value={loginTime}
-                onChange={e => setLoginTime(e.target.value)}
+                onChange={(e) => setLoginTime(e.target.value)}
                 className="w-full rounded-xl border border-neutral-800 bg-neutral-900/80 px-3 py-2 text-sm outline-none focus:border-neutral-700 focus:ring-2 focus:ring-indigo-500/40"
                 placeholder="22:30"
               />
             </div>
             <div>
-              <label className="block text-sm text-neutral-300 mb-2">Shift logout (24h)</label>
+              <label className="block text-sm text-neutral-300 mb-2">
+                Shift logout (24h)
+              </label>
               <input
                 type="time"
                 value={logoutTime}
-                onChange={e => setLogoutTime(e.target.value)}
+                onChange={(e) => setLogoutTime(e.target.value)}
                 className="w-full rounded-xl border border-neutral-800 bg-neutral-900/80 px-3 py-2 text-sm outline-none focus:border-neutral-700 focus:ring-2 focus:ring-indigo-500/40"
                 placeholder="08:00"
               />
             </div>
           </div>
 
+          {/* Quick select saved shifts */}
+          {savedShifts.length > 0 && (
+            <div className="mt-4">
+              <div className="text-xs text-neutral-400 mb-2">
+                Quick Select Saved Shifts
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {savedShifts.map((shift) => (
+                  <button
+                    key={shift.id}
+                    onClick={() => applyShift(shift)}
+                    className="px-3 py-1 rounded-lg border border-neutral-800 bg-neutral-900/40 text-sm text-neutral-200 hover:border-indigo-500 hover:text-indigo-400 transition"
+                  >
+                    {shift.start_time} → {shift.end_time}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Days to skip */}
           <div className="mt-4" data-tour="options">
-            <label className="block text-sm text-neutral-300 mb-2">Days to skip</label>
+            <label className="block text-sm text-neutral-300 mb-2">
+              Days to skip
+            </label>
             <div className="flex flex-wrap gap-2">
               {DAY_LABELS.map((label, i) => (
                 <button
@@ -313,9 +382,11 @@ export default function CSVGenerator() {
                   type="button"
                   onClick={() => toggleSkip(i)}
                   className={`px-3 py-1.5 rounded-lg border text-sm transition
-                    ${skip.has(i)
-                      ? "bg-neutral-800 border-neutral-700 text-neutral-200"
-                      : "bg-neutral-950/60 border-neutral-800 text-neutral-400 hover:border-neutral-700"}`}
+                    ${
+                      skip.has(i)
+                        ? "bg-neutral-800 border-neutral-700 text-neutral-200"
+                        : "bg-neutral-950/60 border-neutral-800 text-neutral-400 hover:border-neutral-700"
+                    }`}
                 >
                   {label}
                 </button>
@@ -329,7 +400,7 @@ export default function CSVGenerator() {
               id="next-day"
               type="checkbox"
               checked={nextDay}
-              onChange={e => setNextDay(e.target.checked)}
+              onChange={(e) => setNextDay(e.target.checked)}
               className="h-4 w-4 accent-indigo-600"
             />
             <label htmlFor="next-day" className="text-sm text-neutral-300">
@@ -338,7 +409,10 @@ export default function CSVGenerator() {
           </div>
 
           {/* Actions */}
-          <div className="mt-6 flex flex-wrap items-center gap-3" data-tour="export">
+          <div
+            className="mt-6 flex flex-wrap items-center gap-3"
+            data-tour="export"
+          >
             <button
               onClick={downloadCSV}
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-indigo-600 to-indigo-700 px-4 py-2.5 text-sm font-medium text-white shadow-[0_6px_16px_-6px_rgba(99,102,241,0.6)] hover:from-indigo-500 hover:to-indigo-600"
@@ -355,7 +429,10 @@ export default function CSVGenerator() {
             </button>
 
             <div className="text-xs text-neutral-500 ml-auto">
-              {ids.length ? `${ids.length} employee${ids.length>1?"s":""}` : "0 employees"} • {previewRows.length} rows
+              {ids.length
+                ? `${ids.length} employee${ids.length > 1 ? "s" : ""}`
+                : "0 employees"}{" "}
+              • {previewRows.length} rows
             </div>
           </div>
         </div>

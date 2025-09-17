@@ -10,6 +10,8 @@ import { HelpCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Brand from "@/components/Brand";
+import NProgress from "nprogress";
+
 
 export default function AuthCard() {
   const supabase = useMemo(() => getBrowserClient(), []);
@@ -26,6 +28,7 @@ export default function AuthCard() {
     }
 
     setBusy(true);
+    NProgress.start(); // 🔵 show top loader
     const t = toast.loading(mode === "login" ? "Logging in..." : "Creating your account...");
 
     try {
@@ -63,6 +66,7 @@ export default function AuthCard() {
     } catch (err) {
       toast.error(err?.message || "Something went wrong.", { id: t });
     } finally {
+      NProgress.done(); // 🔵 hide top loader
       setBusy(false);
     }
   }

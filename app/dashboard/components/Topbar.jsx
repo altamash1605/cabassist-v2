@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Bell, ChevronDown, LogOut, Mail, User, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
+import NProgress from "nprogress"; // ⬅️ added
 
 export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, onDismissNew }) {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -49,7 +50,9 @@ export default function Topbar({ email, onSignOut, hasNew = false, onStartTour, 
   }, [userMenuOpen, notifOpen]);
 
   async function handleSignOut() {
+    NProgress.start(); // 🔵 show top loader
     await onSignOut?.();
+    NProgress.done(); // 🔵 hide top loader
     router.refresh();
     router.push("/auth");
   }
